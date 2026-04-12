@@ -1,0 +1,47 @@
+# ========== Unity Generated Folders ==========
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+UserSettings/
+
+# ========== IDE Files ==========
+
+.vscode/
+.idea/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+
+# ========== OS Files ==========
+
+.DS_Store
+Thumbs.db
+
+# ========== Unity Cache ==========
+
+MemoryCaptures/
+
+# ========== Addressables ==========
+
+ServerData/
+
+# ========== Crash Reports ==========
+
+sysinfo.txt
+
+# ========== Optional ==========
+
+# Uncomment if you don't use packages in repo
+
+# Packages/packages-lock.json
