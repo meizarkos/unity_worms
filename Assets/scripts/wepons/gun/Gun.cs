@@ -6,7 +6,8 @@ public class Gun : Weapon
     public GameObject bulletPrefab;
     private SpriteRenderer muzzleFlash; 
     public Transform firePoint;
-    public float bulletForce = 10f;
+    public float shootInterval = 0.25f;
+    private float lastShoot = 0;
     public float flashDuration = 0.1f;
 
     void Start()
@@ -17,9 +18,10 @@ public class Gun : Weapon
 
     public override void Fire()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, bulletPrefab.transform.rotation);
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.linearVelocity = firePoint.right * bulletForce;
+        lastShoot += Time.deltaTime;
+        if (lastShoot < shootInterval) return;
+        lastShoot = 0;
+        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         StartCoroutine(Flash());
     }
 
