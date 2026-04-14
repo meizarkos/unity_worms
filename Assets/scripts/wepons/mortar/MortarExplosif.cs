@@ -10,21 +10,12 @@ public class MortarExplosif : MonoBehaviour
     public float rotation = 90f;
 
     private SpriteRenderer sr;
-
-    public int damage = 15;
-    public float flashDuration = 0.1f;
-    public SpriteRenderer[] explosionFlashes;
-    private bool hasExploded = false;
-
+    public GameObject hitDamage;
+    public GameObject hitEffect;
+    
     void Start()
     {
-        explosionFlashes = GetComponentsInChildren<SpriteRenderer>();
-        foreach (var flash in explosionFlashes)
-        {
-            flash.enabled = false;
-        }
         sr = GetComponent<SpriteRenderer>();
-        sr.enabled = true;
         rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.right * horizontalSpeed + transform.up * verticalSpeed;
         Destroy(gameObject,lifeTime);
@@ -46,29 +37,8 @@ public class MortarExplosif : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (hasExploded) return;
-        hasExploded = true;
-        StartCoroutine(Flash(collision));
-        Ennemy ennemy = collision.gameObject.GetComponent<Ennemy>();
-        ennemy?.TakeDamage(damage);
-    }
-
-    IEnumerator Flash(Collider2D collision)
-    {
-        rb.linearVelocity = Vector2.zero;
-        sr.enabled = false;
-
-        foreach (var flash in explosionFlashes)
-        {
-            flash.enabled = true;
-            flash.transform.position = collision.transform.position;
-        }
-        yield return new WaitForSeconds(flashDuration);
-        explosionFlashes[0].enabled = false;
-
-        yield return new WaitForSeconds(flashDuration);
-        explosionFlashes[1].enabled = false;
-
+        Instantiate(hitDamage,transform.position, Quaternion.identity, null);
+        Instantiate(hitEffect, transform.position, Quaternion.identity, null);
         Destroy(gameObject);
     }
 }
