@@ -5,7 +5,6 @@ public class Mortar : Weapon
 {
     public GameObject bulletPrefab;
     private SpriteRenderer[] muzzleFlashes;
-    public Transform firePoint;
     public float flashDuration = 0.1f;
     public float shootInterval = 1f;
     private float lastShoot = 0;
@@ -19,12 +18,26 @@ public class Mortar : Weapon
         }
     }
 
+    void Update()
+    {
+        ChangeAngle();
+        ChangePower();
+        transform.localRotation = Quaternion.Euler(0, 0, currentAngle);
+    }
+
     public override void Fire()
     {
         lastShoot += Time.deltaTime;
         if( lastShoot < shootInterval ) return;
         lastShoot = 0;
-        Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject mortarObus = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        MortarExplosif obus = mortarObus.GetComponent<MortarExplosif>();
+        obus.SetPower(power);
+        float facingDir = Mathf.Sign(firePoint.right.x); 
+        Vector2 dir = RotateVector(firePoint.right, startingAngle * facingDir); 
+        obus.SetLaunchDirection(dir);
+        obus.SetAngle(currentAngle);
+        obus.Launch();
         StartCoroutine(MortarShootAnimation());
     }
 
@@ -39,4 +52,12 @@ public class Mortar : Weapon
         yield return new WaitForSeconds(flashDuration);
         muzzleFlashes[1].enabled = false;
     }
+
+    Vector2 RotateVector(Vector2 v, float degrees) {
+    float rad = degrees * Mathf.Deg2Rad;
+    return new Vector2(
+        v.x * Mathf.Cos(rad) - v.y * Mathf.Sin(rad),
+        v.x * Mathf.Sin(rad) + v.y * Mathf.Cos(rad)
+    );
+}
 }

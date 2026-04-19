@@ -138,8 +138,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8c55144ea36b34aa0d88285f73c7a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Mortar
-  bulletPrefab: {fileID: 622451307315785125, guid: 416906d4ef4be33459ea8c5ae9d639eb, type: 3}
+  maxPower: 10
+  minAngle: 35
+  maxAngle: 55
+  startingAngle: 35
+  dotCount: 5
   firePoint: {fileID: 3855887948498754870}
+  timeStep: 0.03
+  bulletPrefab: {fileID: 622451307315785125, guid: 416906d4ef4be33459ea8c5ae9d639eb, type: 3}
   flashDuration: 0.1
   shootInterval: 1
 --- !u!1 &5650505767420000556

@@ -109,13 +109,13 @@ MonoBehaviour:
   maxPower: 0
   minAngle: -75
   maxAngle: 55
+  startingAngle: 0
   dotCount: 5
-  timeStep: 0.1
-  bulletPrefab: {fileID: 646373447866027006, guid: 4ff2bd1485d4e2e49970e40dfdcee104, type: 3}
   firePoint: {fileID: 504210732555923501}
+  timeStep: 0.03
+  bulletPrefab: {fileID: 646373447866027006, guid: 4ff2bd1485d4e2e49970e40dfdcee104, type: 3}
   shootInterval: 0.25
   flashDuration: 0.1
-  dotPrefab: {fileID: 3800682145432097280, guid: 7517b8ce8382d1241bb19640c19640aa, type: 3}
   speed: 20
 --- !u!120 &7154476534989188326
 LineRenderer:
