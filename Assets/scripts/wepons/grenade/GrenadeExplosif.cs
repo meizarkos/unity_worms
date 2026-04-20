@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class MortarExplosif : MonoBehaviour
+public class GrenadeExplosif : MonoBehaviour
 {
     private float power;
     private float shotAngle;
     private Vector2 launchDirection;
     public float lifeTime = 5f;
+    public float spinSpeed = 25f;
     private Rigidbody2D rb;
-    public float startingRotation = 90f;
 
     private SpriteRenderer sr;
     public GameObject hitDamage;
@@ -23,6 +23,7 @@ public class MortarExplosif : MonoBehaviour
     }
     public void Launch() {
         rb.linearVelocity = launchDirection * power;
+        rb.angularVelocity = spinSpeed;
     }
 
     public void SetAngle(float shotAngle)
@@ -39,21 +40,9 @@ public class MortarExplosif : MonoBehaviour
         launchDirection = dir;
     }
 
-    void FixedUpdate() 
-    { 
-        if (rb.linearVelocity.sqrMagnitude > 0.01f) 
-        { 
-            float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg; 
-            float dir = Mathf.Sign(rb.linearVelocity.x); 
-            sr.flipY = dir > 0;
-            rb.rotation = angle + startingRotation * dir;
-        } 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnDestroy()
     {
-        Instantiate(hitDamage,transform.position, Quaternion.identity, null);
-        Instantiate(hitEffect, transform.position, Quaternion.identity, null);
-        Destroy(gameObject);
+        Instantiate(hitDamage, transform.position, Quaternion.identity);
+        Instantiate(hitEffect, transform.position, Quaternion.identity);
     }
 }

@@ -1,21 +1,17 @@
 using System.Collections;
 using UnityEngine;
 
-public class Mortar : Weapon
+public class GrenadeWeapon : Weapon
 {
-    public GameObject bulletPrefab;
-    private SpriteRenderer[] muzzleFlashes;
-    public float flashDuration = 0.1f;
+    public GameObject grenadePrefab;
+    public float disableDisplay = 5.5f;
     public float shootInterval = 1f;
     private float lastShoot = 0;
+    private SpriteRenderer sr;
 
     void Start()
     {
-        muzzleFlashes = firePoint.GetComponentsInChildren<SpriteRenderer>();
-        foreach (var flash in muzzleFlashes)
-        {
-            flash.enabled = false;
-        }
+        sr = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -30,27 +26,22 @@ public class Mortar : Weapon
         lastShoot += Time.deltaTime;
         if( lastShoot < shootInterval ) return;
         lastShoot = 0;
-        GameObject mortarObus = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        MortarExplosif obus = mortarObus.GetComponent<MortarExplosif>();
+        GameObject grenade = Instantiate(grenadePrefab, firePoint.position, firePoint.rotation);
+        GrenadeExplosif obus = grenade.GetComponent<GrenadeExplosif>();
         obus.SetPower(power);
         float facingDir = Mathf.Sign(firePoint.right.x); 
         Vector2 dir = RotateVector(firePoint.right, startingAngle * facingDir); 
         obus.SetLaunchDirection(dir);
         obus.SetAngle(currentAngle);
         obus.Launch();
-        StartCoroutine(MortarShootAnimation());
+        StartCoroutine(GrenadeShootAnimation());
     }
 
-    IEnumerator MortarShootAnimation()
+    IEnumerator GrenadeShootAnimation()
     {
-        muzzleFlashes[0].enabled = true;
-        muzzleFlashes[1].enabled = true;
-
-        yield return new WaitForSeconds(flashDuration);
-        muzzleFlashes[0].enabled = false;
-
-        yield return new WaitForSeconds(flashDuration);
-        muzzleFlashes[1].enabled = false;
+        sr.enabled = false;
+        yield return new WaitForSeconds(disableDisplay);
+        sr.enabled = true;
     }
 
     Vector2 RotateVector(Vector2 v, float degrees) {
