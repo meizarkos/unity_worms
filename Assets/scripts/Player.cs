@@ -25,7 +25,7 @@ public class Player : MonoBehaviour {
         {
             SwitchWeapon();
         }
-        FireWeapon();
+        //FireWeapon();
         Weapon currentWeapon = weapons[usingWeaponIndex].GetComponent<Weapon>();
         
         trajectory.UpdateDots(
@@ -51,13 +51,14 @@ public class Player : MonoBehaviour {
         }
     }
 
-    void FireWeapon() {
-        if (Input.GetButton("Fire1"))
+    public void FireWeapon() {
+        Weapon weapon = weapons[usingWeaponIndex].GetComponent<Weapon>();
+        if (weapon == null)
         {
-            Weapon weapon = weapons[usingWeaponIndex].GetComponent<Weapon>();
-            weapon?.Fire();
-            trajectory.DeactivateWhileFiring();   
+            Debug.LogError("Weapon component not found on the current weapon.");
         }
+        weapon?.Fire();
+        trajectory.DeactivateWhileFiring();
     }
     void SwitchWeapon()
     {

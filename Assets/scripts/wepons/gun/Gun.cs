@@ -28,6 +28,7 @@ public class Gun : Weapon
         lastShoot += Time.deltaTime;
         if (lastShoot < shootInterval) return;
         lastShoot = 0;
+        Debug.Log("Firing gun with power: " + power + " and angle: " + currentAngle);
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         StartCoroutine(Flash());
     }
