@@ -5,7 +5,7 @@ public class GrenadeWeapon : Weapon
 {
     public GameObject grenadePrefab;
     public float disableDisplay = 5.5f;
-    public float shootInterval = 1f;
+    public float shootInterval = 0.025f;
     private float lastShoot = 0;
     private SpriteRenderer sr;
 

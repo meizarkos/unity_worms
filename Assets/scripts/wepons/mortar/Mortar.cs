@@ -6,7 +6,7 @@ public class Mortar : Weapon
     public GameObject bulletPrefab;
     private SpriteRenderer[] muzzleFlashes;
     public float flashDuration = 0.1f;
-    public float shootInterval = 1f;
+    public float shootInterval = 0.025f;
     private float lastShoot = 0;
 
     void Start()
@@ -28,6 +28,7 @@ public class Mortar : Weapon
     public override void Fire()
     {
         lastShoot += Time.deltaTime;
+        Debug.Log("Last shoot time: " + lastShoot);
         if( lastShoot < shootInterval ) return;
         lastShoot = 0;
         GameObject mortarObus = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);

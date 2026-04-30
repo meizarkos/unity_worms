@@ -5,7 +5,7 @@ public class Gun : Weapon
 {
     public GameObject bulletPrefab;
     private SpriteRenderer muzzleFlash;
-    public float shootInterval = 0.25f;
+    public float shootInterval = 0.025f;
     private float lastShoot = 0;
     public float flashDuration = 0.1f;
     public float speed = 20f;
@@ -28,7 +28,6 @@ public class Gun : Weapon
         lastShoot += Time.deltaTime;
         if (lastShoot < shootInterval) return;
         lastShoot = 0;
-        Debug.Log("Firing gun with power: " + power + " and angle: " + currentAngle);
         Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         StartCoroutine(Flash());
     }

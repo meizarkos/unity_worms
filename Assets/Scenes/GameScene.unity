@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &36244040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 36244042}
+  - component: {fileID: 36244041}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: GameController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &36244041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36244040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d8ca5dc242fd6948b344ae13d924560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  texthealth: {fileID: 1398752353}
+--- !u!4 &36244042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36244040}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1016.8221, y: 165.05492, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &132563729
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,7 +291,7 @@ GameObject:
   - component: {fileID: 315703048}
   - component: {fileID: 315703047}
   m_Layer: 5
-  m_Name: Button (8)
+  m_Name: weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,7 +360,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 315703048}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412948435}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SwitchWeapon
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &315703048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1656,7 +1713,7 @@ GameObject:
   - component: {fileID: 901275214}
   - component: {fileID: 901275213}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1725,7 +1782,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 901275214}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412948435}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: GoRight
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &901275214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1777,7 +1846,7 @@ GameObject:
   - component: {fileID: 910134482}
   - component: {fileID: 910134481}
   m_Layer: 5
-  m_Name: Button (10)
+  m_Name: decreaseAngle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1846,7 +1915,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 910134482}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412948435}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: WeaponDecreaseAngle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &910134482
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,7 +2112,7 @@ GameObject:
   - component: {fileID: 974308914}
   - component: {fileID: 974308913}
   m_Layer: 5
-  m_Name: Button (9)
+  m_Name: addAngle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2100,7 +2181,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 974308914}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412948435}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: WeaponAddAngle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &974308914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,7 +2245,7 @@ GameObject:
   - component: {fileID: 1065666469}
   - component: {fileID: 1065666468}
   m_Layer: 5
-  m_Name: Button (5)
+  m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2221,7 +2314,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1065666469}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412948435}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: GoLeft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1065666469
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2273,7 +2378,7 @@ GameObject:
   - component: {fileID: 1084844760}
   - component: {fileID: 1084844759}
   m_Layer: 5
-  m_Name: Button (7)
+  m_Name: addPower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2342,7 +2447,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1084844760}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412948435}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: WeaponAddPower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1084844760
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2985,7 +3102,7 @@ GameObject:
   - component: {fileID: 1571162805}
   - component: {fileID: 1571162804}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3054,7 +3171,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1571162805}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412948435}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: Jump
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1571162805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3570,7 +3699,7 @@ GameObject:
   - component: {fileID: 1873011740}
   - component: {fileID: 1873011739}
   m_Layer: 5
-  m_Name: Button (6)
+  m_Name: decreasePower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3639,7 +3768,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1873011740}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 412948435}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: WeaponDecreasePower
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1873011740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4100,6 +4241,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: worm
       objectReference: {fileID: 0}
+    - target: {fileID: 1374166596798814072, guid: 35d41c91abd56d74cbb1f729af943ae7, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1421050013688500653, guid: 35d41c91abd56d74cbb1f729af943ae7, type: 3}
+      propertyPath: shootInterval
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 6389152789876197315, guid: 35d41c91abd56d74cbb1f729af943ae7, type: 3}
+      propertyPath: shootInterval
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 6779092150887594583, guid: 35d41c91abd56d74cbb1f729af943ae7, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.14
@@ -4139,6 +4292,10 @@ PrefabInstance:
     - target: {fileID: 6779092150887594583, guid: 35d41c91abd56d74cbb1f729af943ae7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843563499155381231, guid: 35d41c91abd56d74cbb1f729af943ae7, type: 3}
+      propertyPath: shootInterval
+      value: 0.025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4222,3 +4379,4 @@ SceneRoots:
   - {fileID: 224360120}
   - {fileID: 1776572016}
   - {fileID: 1971914697}
+  - {fileID: 36244042}

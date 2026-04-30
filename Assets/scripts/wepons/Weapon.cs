@@ -31,6 +31,30 @@ public abstract class Weapon : MonoBehaviour
         return power;
     }
 
+    public void AddAngle()
+    {
+        currentAngle += smooth * Time.deltaTime * 10;
+        currentAngle = Mathf.Clamp(currentAngle , minAngle, maxAngle);
+    }
+
+    public void DecreaseAngle()
+    {
+        currentAngle -= smooth * Time.deltaTime * 10;
+        currentAngle = Mathf.Clamp(currentAngle , minAngle, maxAngle);
+    }
+
+    public void AddPower()
+    {
+        power += maxPower / 20;
+        power = Mathf.Clamp(power ,0.1f, maxPower);
+    }
+
+    public void DecreasePower()
+    {
+        power -= maxPower / 20;
+        power = Mathf.Clamp(power ,0.1f, maxPower);
+    }
+
     public void ChangeAngle()
     {
         if (Input.GetKey(KeyCode.X)) {
